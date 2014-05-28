@@ -2,7 +2,7 @@ html, body {
     height: 100%;
 }
 
-#container, #canvas, #editor, #flavortext {
+#container, #puzzlePane, #editorPane, #flavorText {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -14,22 +14,22 @@ html, body {
     position: relative;
 }
 
-#flavortext {
+#flavorText {
     width: 100%;
     font: 1em/1.8 'Roboto Slab', serif;
     border-bottom: 1px black solid;
     padding: 0 0.5em;
 }
 
-#canvas, #editor {
+#puzzlePane, #editorPane {
     float: left;
     width: 50%;
     height: 100%;
 }
 
-#editor .CodeMirror { height: 100%; }
+#editorPane .CodeMirror { height: 100%; }
 
-#canvas {
+#puzzlePane {
     border-right: 1px black solid;
     font: 2em/1.5 'Roboto Slab', serif;
 }

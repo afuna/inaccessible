@@ -1,10 +1,10 @@
-function Game(gameCanvasId) {
+function Game(puzzlePaneId) {
     this.initialize = function() {
-        this.canvas = document.getElementById("canvas");
+        this.puzzlePane = document.getElementById(puzzlePaneId);
     };
 
     this.update = function(string) {
-        this.canvas.innerHTML = string;
+        this.puzzlePane.innerHTML = string;
     }
 
     this.initialize();
