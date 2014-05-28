@@ -1,3 +1,7 @@
+html, body {
+    height: 100%;
+}
+
 #container, #canvas, #editor {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -5,8 +9,8 @@
 }
 
 #container {
-    padding: 1vh 0;
-    height: 98vh;
+    padding: 20px 0;
+    height: 100%;
     position: relative;
 }
 
