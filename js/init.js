@@ -8,6 +8,13 @@
             window.requestAnimationFrame(updatePuzzle);
         });
 
+        var editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
+            theme: 'neo',
+            lineNumbers: true,
+            dragDrop: false,
+            smartIndent: false
+        });
+
         updatePuzzle();
     });
 })(jQuery, window)

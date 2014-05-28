@@ -37,16 +37,3 @@ html, body {
 .puzzle input {
     position: relative;
 }
-
-#editor {
-    padding-left: 1em;
-}
-#code-editor {
-    background-color: #222;
-    background-color: #fff;
-    border: 0;
-    padding: 0 1em;
-    font: 1.2em/1.5 'Inconsolata', monospace;
-    height: 90%;
-    width: 90%;
-}
