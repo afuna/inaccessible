@@ -1,0 +1,48 @@
+#container, #canvas, #editor {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#container {
+    padding: 1vh 0;
+    height: 98vh;
+    position: relative;
+}
+
+#canvas, #editor {
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+#canvas {
+    border-right: 1px black solid;
+    font: 2em/1.5 'Roboto Slab', serif;
+    position: relative;
+}
+
+.puzzle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+}
+
+/* this should be level specific*/
+.puzzle input {
+    position: relative;
+}
+
+#editor {
+    padding-left: 1em;
+}
+#code-editor {
+    background-color: #222;
+    background-color: #fff;
+    border: 0;
+    padding: 0 1em;
+    font: 1.2em/1.5 'Inconsolata', monospace;
+    height: 90%;
+    width: 90%;
+}
