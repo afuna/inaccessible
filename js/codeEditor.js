@@ -2,7 +2,7 @@ function CodeEditor(textareaId, game) {
 
     this.initialize = function() {
         this.editor = CodeMirror.fromTextArea(document.getElementById(textareaId), {
-            theme: 'neo',
+            theme: 'monokai',
             lineNumbers: true,
             dragDrop: false,
             smartIndent: false
