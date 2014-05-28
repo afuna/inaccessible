@@ -2,16 +2,23 @@ html, body {
     height: 100%;
 }
 
-#container, #canvas, #editor {
+#container, #canvas, #editor, #flavortext {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 #container {
-    padding: 20px 0;
-    height: 100%;
+    padding-bottom: 20px;
+    height: 98%;
     position: relative;
+}
+
+#flavortext {
+    width: 100%;
+    font: 1em/1.8 'Roboto Slab', serif;
+    border-bottom: 1px black solid;
+    padding: 0 0.5em;
 }
 
 #canvas, #editor {
@@ -20,20 +27,29 @@ html, body {
     height: 100%;
 }
 
+#editor .CodeMirror { height: 100%; }
+
 #canvas {
     border-right: 1px black solid;
     font: 2em/1.5 'Roboto Slab', serif;
+}
+
+/* this should be level specific*/
+.chest {
+    margin: 0 auto;
+    background-color: #d2b48c;
+    width: 600px;
+    height: 300px;
     position: relative;
 }
 
-.puzzle {
+.chest .keyhole {
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform:translate(-50%,-50%);
 }
 
-/* this should be level specific*/
-.puzzle input {
+.chest input {
     position: relative;
 }
