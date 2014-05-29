@@ -43,13 +43,19 @@ function CodeEditor(textareaId, game) {
                 }
             }
         });
-
-        this.editor.on("changes", function(editor) {
-            game.update(editor.getValue());
-        });
     };
 
-    this.loadCode = function(code) {
+    this.updateGame = function() {
+        game.update(this.editor.getValue());
+    };
+
+    this.loadCode = function(code, codeType) {
+        if (codeType === "html") {
+            this.editor.on("changes", this.updateGame.bind(this));
+        } else {
+            this.editor.off("changes", this.updateGame.bind(this));
+        }
+
         this.editor.setValue(preprocess(code));
         highlightLines(this.editor);
     };

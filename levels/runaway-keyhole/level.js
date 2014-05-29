@@ -7,6 +7,7 @@ var levelData = {
 !       <label>keyhole</label>\n\
     </form>\n\
 </div>",
+    codeType: "html",
     onLevelStart: function(game) {
         function getRandomVector(min, max) {
             var signRandom = Math.random()

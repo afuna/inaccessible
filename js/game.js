@@ -44,7 +44,9 @@ function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
             .done(function() {
                 game.updateFlavorText(levelData.flavorText);
                 game.updateTitleText(levelData.title);
-                game.editor.loadCode(levelData.code);
+
+                game.editor.loadCode(levelData.code, levelData.codeType);
+
                 if (typeof levelData.onLevelStart == "function") {
                     levelData.onLevelStart(game);
                 }
