@@ -23,7 +23,7 @@ function Game(puzzlePaneId, flavorTextPaneId, startLevel) {
 
     this.loadLevel = function(levelNumber) {
         var game = this;
-        $.getScript("/levels/level" + levelNumber + ".js")
+        $.getScript("levels/level" + levelNumber + ".js")
             .done(function() {
                 game.setFlavorText(levelData.flavorText);
                 game.editor.loadCode(levelData.code);
