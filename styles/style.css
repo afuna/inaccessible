@@ -37,4 +37,19 @@ html, body {
 #puzzlePane {
     border-right: 1px black solid;
     font: 2em/1.5 'Roboto Slab', serif;
+    position: relative;
+}
+
+#puzzlePane button {
+    background-color: #272822;
+    color: #f8f8f2;
+    font-size: 2em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
 }

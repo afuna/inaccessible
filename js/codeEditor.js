@@ -47,8 +47,6 @@ function CodeEditor(textareaId, game) {
         this.editor.on("changes", function(editor) {
             game.update(editor.getValue());
         });
-
-        game.update(this.editor.getValue());
     };
 
     this.loadCode = function(code) {

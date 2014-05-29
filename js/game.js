@@ -10,7 +10,10 @@ function Game(puzzlePaneId, flavorTextPaneId, startLevel) {
             game.setFlavorText("Success! You move on...");
             game.loadLevel(game.currentLevel + 1);
         });
-        game.loadLevel(game.currentLevel);
+
+        $(".begin").click(function() {
+            game.loadLevel(1);
+        });
     };
 
     this.update = function(string) {
