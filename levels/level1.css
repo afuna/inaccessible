@@ -9,7 +9,7 @@
 
 .level1 .chest .keyhole {
     position: absolute;
-    top: 30%;
+    top: 40%;
     left: 50%;
     transform:translate(-50%,-50%);
 }
@@ -20,7 +20,7 @@
 }
 
 .level1 .chest label {
-    background-color: #222;
-    color: #ddd;
+    background-color: #272822;
+    color: #f8f8f2;
     padding: 5px 15px 5px 30px;
 }
