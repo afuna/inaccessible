@@ -41,7 +41,7 @@ function Game(puzzlePaneId, flavorTextPaneId, startLevel) {
                 }
                 game.level += 1;
             });
-        $('head').append('<link rel="stylesheet" href="levels/' + levelName + '/level.css" type="text/css" />');
+        $('head').append('<link rel="stylesheet" href="levels/' + levelName + '/level.css?_=' + Math.random() + '" type="text/css" />');
         $('body').removeClass(function(i, className) {
             return className.indexOf("level") == 0;
         }).addClass("level-" + levelName);
