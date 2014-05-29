@@ -8,11 +8,10 @@
 }
 
 .level-runaway-keyhole .chest .keyhole {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
+    position: relative;
+    top: 100px;
+    right: 15px;
+    text-align: center;
 }
 
 .level-runaway-keyhole .chest input {
