@@ -1,9 +1,10 @@
 .level1 .chest {
-    margin: 0 auto;
-    background-color: #d2b48c;
+    margin: 1em auto;
+    background-color: #B4966E;
     width: 600px;
     height: 300px;
     position: relative;
+    border-radius: 50px 50px 3px 3px;
 }
 
 .level1 .chest .keyhole {
@@ -15,4 +16,11 @@
 
 .level1 .chest input {
     position: relative;
+    left: 30px;
+}
+
+.level1 .chest label {
+    background-color: #222;
+    color: #ddd;
+    padding: 5px 15px 5px 30px;
 }
