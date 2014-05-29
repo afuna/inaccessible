@@ -45,15 +45,15 @@ function CodeEditor(textareaId, game) {
         });
     };
 
-    this.updateGame = function() {
-        game.update(this.editor.getValue());
+    var updateGame = function(editor) {
+        game.updatePuzzlePane(editor.getValue());
     };
 
     this.loadCode = function(code, codeType) {
         if (codeType === "html") {
-            this.editor.on("changes", this.updateGame.bind(this));
+            this.editor.on("changes", updateGame);
         } else {
-            this.editor.off("changes", this.updateGame.bind(this));
+            this.editor.off("changes", updateGame);
         }
 
         this.editor.setValue(preprocess(code));

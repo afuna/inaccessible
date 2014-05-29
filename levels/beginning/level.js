@@ -4,7 +4,7 @@ var levelData = {
     code: "// good luck",
     codeType: "javascript",
     onLevelStart: function(game) {
-        $(game.puzzlePane).append("<button class='begin main-focus'>Begin</button>");
+        game.updatePuzzlePane("<button class='begin main-focus'>Begin</button>");
         $(".begin").click(function() {
             $(game.puzzlePane).trigger("levelwin");
         });

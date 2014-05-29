@@ -24,7 +24,7 @@ function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
         });
     };
 
-    this.update = function(string) {
+    this.updatePuzzlePane = function(string) {
         this.puzzlePane.innerHTML = string;
     };
 
