@@ -1,18 +1,15 @@
 (function($, window, undefined) {
     $(document).ready(function() {
-        var startLevel;
-        if (document.location.hash) {
-            startLevel = /^#level(\d+)/.exec(document.location.hash)[1];
+        function getLevelFromURL() {
+            if (document.location.hash) {
+                return /^#level(\d+)/.exec(document.location.hash)[1];
+            }
         }
 
-        var game = new Game("puzzlePane", "flavorText", "titleText", startLevel);
+        var game = new Game("puzzlePane", "flavorText", "titleText", getLevelFromURL());
 
         window.onpopstate = function(e) {
-            if(e.state) {
-                game.loadLevel(e.state.level);
-            } else {
-                game.loadLevel(0);
-            }
+            game.loadLevel(getLevelFromURL());
         }
     });
 })(jQuery, window)
