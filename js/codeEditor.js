@@ -6,7 +6,7 @@ function CodeEditor(textareaId, game) {
         var lines = code.split("\n");
         for (var i in lines) {
             var line = lines[i];
-            if (line.startsWith("!")) {
+            if (line.indexOf("!") == 0) {
                 editableLines.push(i);
                 line = line.replace("!", " ");
             }

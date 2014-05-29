@@ -43,7 +43,7 @@ function Game(puzzlePaneId, flavorTextPaneId, startLevel) {
             });
         $('head').append('<link rel="stylesheet" href="levels/' + levelName + '/level.css" type="text/css" />');
         $('body').removeClass(function(i, className) {
-            return className.startsWith("level");
+            return className.indexOf("level") == 0;
         }).addClass("level-" + levelName);
     };
 
