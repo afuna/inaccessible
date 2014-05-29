@@ -22,6 +22,11 @@ var levelData = {
             $(this).animate(delta, 200);
         }
 
-        $(game.puzzlePane).on("mouseover", "#canttouchme", runAway)
-    }
+        $(game.puzzlePane).on("mouseover", "#canttouchme", runAway);
+
+        // now we register the win condition
+        $(game.puzzlePane).on("change", "#canttouchme", function() {
+            $(game.puzzlePane).trigger("levelwin");
+        });
+    },
 };
