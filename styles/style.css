@@ -1,5 +1,6 @@
 html, body {
     height: 100%;
+    font: 1em/1.5 'Roboto Slab', serif;
 }
 
 #container, #puzzlePane, #editorPane, #flavorText {
@@ -14,9 +15,12 @@ html, body {
     position: relative;
 }
 
+#titleText {
+    margin-bottom: 0;
+}
+
 #flavorText {
     width: 100%;
-    font: 1em/1.8 'Roboto Slab', serif;
     border-bottom: 1px black solid;
     padding: 0 0.5em;
 }

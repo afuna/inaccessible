@@ -1,4 +1,4 @@
-function Game(puzzlePaneId, flavorTextPaneId, startLevel) {
+function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
     var levelNumberToName = [
         "beginning",
         "runaway-keyhole"
@@ -6,8 +6,11 @@ function Game(puzzlePaneId, flavorTextPaneId, startLevel) {
 
     this.initialize = function() {
         var game = this;
+
         game.puzzlePane = document.getElementById(puzzlePaneId);
         game.flavorTextPane = document.getElementById(flavorTextPaneId);
+        game.titleTextPane = document.getElementById(titleTextPaneId);
+
         game.editor = new CodeEditor("code-editor", game);
         game.currentLevel = parseInt(startLevel || 0, 10);
 
@@ -16,7 +19,7 @@ function Game(puzzlePaneId, flavorTextPaneId, startLevel) {
         };
 
         $(game.puzzlePane).on("levelwin", function() {
-            game.setFlavorText("Success! You move on...");
+            game.updateFlavorText("Success! You move on...");
             game.loadLevel(game.currentLevel + 1);
         });
     };
@@ -25,9 +28,13 @@ function Game(puzzlePaneId, flavorTextPaneId, startLevel) {
         this.puzzlePane.innerHTML = string;
     };
 
-    this.setFlavorText = function(string) {
-        this.flavorTextPane.innerHTML = "> " + string;
+    this.updateFlavorText = function(string) {
+        this.flavorTextPane.innerHTML = string;
     };
+
+    this.updateTitleText = function(string) {
+        this.titleTextPane.innerHTML = "> " + string;
+    }
 
     this.loadLevel = function(levelNumber) {
         var game = this;
@@ -35,7 +42,8 @@ function Game(puzzlePaneId, flavorTextPaneId, startLevel) {
 
         $.getScript("levels/" + levelName + "/level.js")
             .done(function() {
-                game.setFlavorText(levelData.flavorText);
+                game.updateFlavorText(levelData.flavorText);
+                game.updateTitleText(levelData.title);
                 game.editor.loadCode(levelData.code);
                 if (typeof levelData.onLevelStart == "function") {
                     levelData.onLevelStart(game);

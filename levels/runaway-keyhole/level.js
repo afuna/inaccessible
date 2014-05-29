@@ -1,4 +1,5 @@
 var levelData = {
+    title: "The Runaway Keyhole",
     flavorText: "You see a chest in front of you. If you could somehow activate the checkbox, you could open it. But it keeps trying to run away.",
     code: "<div class=\"chest main-focus\">\n\
     <form class=\"keyhole\">\n\

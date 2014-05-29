@@ -5,7 +5,7 @@
             startLevel = /^#level(\d+)/.exec(document.location.hash)[1];
         }
 
-        var game = new Game("puzzlePane", "flavorText", startLevel);
+        var game = new Game("puzzlePane", "flavorText", "titleText", startLevel);
 
         window.onpopstate = function(e) {
             if(e.state) {
