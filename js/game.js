@@ -10,13 +10,17 @@ function Game(puzzlePaneId, flavorTextPaneId, startLevel) {
         game.editor = new CodeEditor("code-editor", game);
         game.currentLevel = startLevel || 1;
 
+        if (startLevel && startLevel <= levelNumberToName.length ) {
+            game.loadLevel(startLevel);
+        } else {
+            $(".begin").click(function() {
+                game.loadLevel(1);
+            });
+        }
+
         $(game.puzzlePane).on("levelwin", function() {
             game.setFlavorText("Success! You move on...");
             game.loadLevel(game.currentLevel + 1);
-        });
-
-        $(".begin").click(function() {
-            game.loadLevel(1);
         });
     };
 
@@ -39,7 +43,9 @@ function Game(puzzlePaneId, flavorTextPaneId, startLevel) {
                 if (typeof levelData.onLevelStart == "function") {
                     levelData.onLevelStart(game);
                 }
-                game.level += 1;
+
+                history.pushState({ "level": levelNumber }, levelData.title, "#level" + levelNumber);
+                game.currentLevel = levelNumber;
             });
         $('head').append('<link rel="stylesheet" href="levels/' + levelName + '/level.css?_=' + Math.random() + '" type="text/css" />');
         $('body').removeClass(function(i, className) {
