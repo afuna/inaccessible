@@ -1,9 +1,9 @@
 function CodeEditor(textareaId, game) {
     var editableLines = [];
-    var modifiedCode = [];
 
     function preprocess(code) {
         var lines = code.split("\n");
+        var modifiedCode = [];
         for (var i in lines) {
             var line = lines[i];
             if (line.indexOf("!") == 0) {
