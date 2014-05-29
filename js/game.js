@@ -1,4 +1,8 @@
 function Game(puzzlePaneId, flavorTextPaneId, startLevel) {
+    var levelNumberToName = [
+        "runaway-keyhole"
+    ];
+
     this.initialize = function() {
         var game = this;
         game.puzzlePane = document.getElementById(puzzlePaneId);
@@ -26,7 +30,9 @@ function Game(puzzlePaneId, flavorTextPaneId, startLevel) {
 
     this.loadLevel = function(levelNumber) {
         var game = this;
-        $.getScript("levels/level" + levelNumber + ".js")
+        var levelName = levelNumberToName[levelNumber - 1];
+
+        $.getScript("levels/" + levelName + "/level.js")
             .done(function() {
                 game.setFlavorText(levelData.flavorText);
                 game.editor.loadCode(levelData.code);
@@ -35,10 +41,10 @@ function Game(puzzlePaneId, flavorTextPaneId, startLevel) {
                 }
                 game.level += 1;
             });
-        $('head').append('<link rel="stylesheet" href="levels/level' + levelNumber + '.css" type="text/css" />');
+        $('head').append('<link rel="stylesheet" href="levels/' + levelName + '/level.css" type="text/css" />');
         $('body').removeClass(function(i, className) {
             return className.startsWith("level");
-        }).addClass("level" +levelNumber);
+        }).addClass("level-" + levelName);
     };
 
     this.initialize();

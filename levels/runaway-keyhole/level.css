@@ -1,4 +1,4 @@
-.level1 .chest {
+.level-runaway-keyhole .chest {
     margin: 1em auto;
     background-color: #B4966E;
     width: 600px;
@@ -7,19 +7,19 @@
     border-radius: 50px 50px 3px 3px;
 }
 
-.level1 .chest .keyhole {
+.level-runaway-keyhole .chest .keyhole {
     position: absolute;
     top: 40%;
     left: 50%;
     transform:translate(-50%,-50%);
 }
 
-.level1 .chest input {
+.level-runaway-keyhole .chest input {
     position: relative;
     left: 30px;
 }
 
-.level1 .chest label {
+.level-runaway-keyhole .chest label {
     background-color: #272822;
     color: #f8f8f2;
     padding: 5px 15px 5px 30px;
