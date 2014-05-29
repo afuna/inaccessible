@@ -29,6 +29,11 @@ html, body {
 
 #editorPane .CodeMirror { height: 100%; }
 
+.CodeMirror-lines .editable {
+    background-color: #000;
+    line-height: 1.5;
+}
+
 #puzzlePane {
     border-right: 1px black solid;
     font: 2em/1.5 'Roboto Slab', serif;
