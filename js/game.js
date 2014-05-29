@@ -1,5 +1,6 @@
 function Game(puzzlePaneId, flavorTextPaneId, startLevel) {
     var levelNumberToName = [
+        "beginning",
         "runaway-keyhole"
     ];
 
@@ -8,15 +9,11 @@ function Game(puzzlePaneId, flavorTextPaneId, startLevel) {
         game.puzzlePane = document.getElementById(puzzlePaneId);
         game.flavorTextPane = document.getElementById(flavorTextPaneId);
         game.editor = new CodeEditor("code-editor", game);
-        game.currentLevel = startLevel || 1;
+        game.currentLevel = parseInt(startLevel || 0, 10);
 
-        if (startLevel && startLevel <= levelNumberToName.length ) {
-            game.loadLevel(startLevel);
-        } else {
-            $(".begin").click(function() {
-                game.loadLevel(1);
-            });
-        }
+        if (game.currentLevel <= levelNumberToName.length ) {
+            game.loadLevel(game.currentLevel);
+        };
 
         $(game.puzzlePane).on("levelwin", function() {
             game.setFlavorText("Success! You move on...");
@@ -34,7 +31,7 @@ function Game(puzzlePaneId, flavorTextPaneId, startLevel) {
 
     this.loadLevel = function(levelNumber) {
         var game = this;
-        var levelName = levelNumberToName[levelNumber - 1];
+        var levelName = levelNumberToName[levelNumber];
 
         $.getScript("levels/" + levelName + "/level.js")
             .done(function() {

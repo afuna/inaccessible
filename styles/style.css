@@ -40,15 +40,6 @@ html, body {
     position: relative;
 }
 
-#puzzlePane .begin {
-    background-color: #272822;
-    color: #f8f8f2;
-    font-size: 2em;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 /* the single element we want to focus on: vertically/horizontally centered*/
 #puzzlePane .main-focus {
     position: absolute;
