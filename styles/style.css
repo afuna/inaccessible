@@ -38,23 +38,3 @@ html, body {
     border-right: 1px black solid;
     font: 2em/1.5 'Roboto Slab', serif;
 }
-
-/* this should be level specific*/
-.chest {
-    margin: 0 auto;
-    background-color: #d2b48c;
-    width: 600px;
-    height: 300px;
-    position: relative;
-}
-
-.chest .keyhole {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform:translate(-50%,-50%);
-}
-
-.chest input {
-    position: relative;
-}
