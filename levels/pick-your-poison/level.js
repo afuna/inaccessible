@@ -52,7 +52,10 @@ var levelData = {
             game.updateEditor(vialStyles.join("\n"));
             game.updatePuzzlePane(vials.join("\n"));
 
-            $(".poison").click(generateVials);
+            $(".poison").click(function() {
+                game.updateFlavorText("Sorry, the poison got you. You open your eyes and see many vials in front of you. Red vials are poison, green will get you out. You can't tell the difference between them.");
+                generateVials();
+            });
             $(".potion").click(game.win.bind(game));
         }
 
