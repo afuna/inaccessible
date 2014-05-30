@@ -1,6 +1,7 @@
 function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
     var levelNumberToName = [
         "beginning",
+        "its-all-a-blur",
         "runaway-keyhole",
         "pick-your-poison"
     ];
