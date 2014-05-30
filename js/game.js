@@ -67,6 +67,7 @@ function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
 
         $.getScript("levels/" + levelName + "/level.js")
             .done(function() {
+                game.updatePuzzlePane("");
                 game.updateFlavorText(levelData.flavorText);
                 game.updateTitleText(levelData.title);
 
