@@ -4,6 +4,7 @@ function CodeEditor(textareaId, game) {
     function preprocess(code) {
         var lines = code.split("\n");
         var modifiedCode = [];
+        editableLines = [];
         for (var i in lines) {
             var line = lines[i];
             if (line.indexOf("!") == 0) {
@@ -19,6 +20,13 @@ function CodeEditor(textareaId, game) {
         for (var i in editableLines) {
             var lineNumber = parseInt(editableLines[i], 10);
             editor.addLineClass(lineNumber, 'wrap', 'editable');
+        }
+    }
+
+    function unhighlightLines(editor) {
+        for (var i in editableLines) {
+            var lineNumber = parseInt(editableLines[i], 10);
+            editor.removeLineClass(lineNumber, 'wrap', 'editable');
         }
     }
 
@@ -71,6 +79,11 @@ function CodeEditor(textareaId, game) {
     this.loadCode = function(code) {
         this.editor.setValue(preprocess(code));
         highlightLines(this.editor);
+    };
+
+    this.unloadCode = function() {
+        this.editor.setValue("");
+        unhighlightLines(this.editor);
     };
 
     this.initialize();

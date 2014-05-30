@@ -22,15 +22,14 @@ function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
 
         $(game.puzzlePane).on("levelwin", function() {
             game.updateFlavorText("Success! You move on...");
+            game.updatePuzzlePane("");
+            game.editor.unloadCode();
+
+            game.loadLevel(game.currentLevel + 1);
 
             $("#panes > div")
                 .addClass("nextLevel")
-                .on("animationend", function(e) {
-                    // so that we don't show the next level's data as we're sliding out the previous level
-                    if (e.originalEvent.animationName == "slideout") {
-                        game.loadLevel(game.currentLevel + 1);
-                    }
-
+                .on("animationend webkitAnimationEnd", function(e) {
                     if (e.originalEvent.animationName == "slidein") {
                         $(e.target).removeClass("nextLevel");
                     }
@@ -82,7 +81,6 @@ function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
 
         $.getScript("levels/" + levelName + "/level.js")
             .done(function() {
-                game.updatePuzzlePane("");
                 game.updateFlavorText(levelData.flavorText);
                 game.updateTitleText(levelData.title);
 
