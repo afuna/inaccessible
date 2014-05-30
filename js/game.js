@@ -18,9 +18,8 @@ function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
         game.editor = new CodeEditor("code-editor", game);
         game.currentLevel = parseInt(startLevel || 0, 10);
 
-        if (game.currentLevel <= levelNumberToName.length ) {
-            game.loadLevel(game.currentLevel);
-        };
+        game.loadLevel(game.currentLevel);
+
 
         $(game.puzzlePane).on("levelwin", function() {
             game.updateFlavorText("Success! You move on...");
@@ -58,6 +57,12 @@ function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
 
     this.loadLevel = function(levelNumber) {
         var game = this;
+
+        if (!(levelNumber in levelNumberToName)) {
+            this.loadLevel(0);
+            return;
+        }
+
         var levelName = levelNumberToName[levelNumber];
 
         $.getScript("levels/" + levelName + "/level.js")
