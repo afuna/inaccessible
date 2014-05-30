@@ -1,0 +1,12 @@
+.level-pick-your-poison .vial {
+    position: absolute;
+    line-height: 1.2em;
+}
+
+.level-pick-your-poison .poison {
+    background-color: #ff0000;
+}
+
+.level-pick-your-poison .potion {
+    background-color: #00ff00;
+}

@@ -1,7 +1,8 @@
 function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
     var levelNumberToName = [
         "beginning",
-        "runaway-keyhole"
+        "runaway-keyhole",
+        "pick-your-poison"
     ];
 
     this.initialize = function() {
@@ -10,6 +11,9 @@ function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
         game.puzzlePane = document.getElementById(puzzlePaneId);
         game.flavorTextPane = document.getElementById(flavorTextPaneId);
         game.titleTextPane = document.getElementById(titleTextPaneId);
+
+        $('head').append("<style id='playerStyles'></style>");
+        game.playerStyles = document.getElementById('playerStyles');
 
         game.editor = new CodeEditor("code-editor", game);
         game.currentLevel = parseInt(startLevel || 0, 10);
@@ -24,8 +28,20 @@ function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
         });
     };
 
+    this.getHeight = function() {
+        return $(this.puzzlePane).height();
+    };
+
+    this.getWidth = function() {
+        return $(this.puzzlePane).width();
+    };
+
     this.updatePuzzlePane = function(string) {
         this.puzzlePane.innerHTML = string;
+    };
+
+    this.updatePuzzlePaneStyle = function(string) {
+        this.playerStyles.innerHTML = string;
     };
 
     this.updateFlavorText = function(string) {
@@ -34,7 +50,11 @@ function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
 
     this.updateTitleText = function(string) {
         this.titleTextPane.innerHTML = "> " + string;
-    }
+    };
+
+    this.updateEditor = function(string) {
+        this.editor.loadCode(string);
+    };
 
     this.loadLevel = function(levelNumber) {
         var game = this;
@@ -45,7 +65,12 @@ function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
                 game.updateFlavorText(levelData.flavorText);
                 game.updateTitleText(levelData.title);
 
-                game.editor.loadCode(levelData.code, levelData.codeType);
+                game.editor.setCodeType(levelData.codeType);
+                game.editor.loadCode(levelData.code);
+
+                if (typeof levelData.onEditorUpdate == "function") {
+                    game.editor.onChange(levelData.onEditorUpdate.bind(levelData, game));
+                }
 
                 if (typeof levelData.onLevelStart == "function") {
                     levelData.onLevelStart(game);
@@ -58,6 +83,10 @@ function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
         $('body').removeClass(function(i, className) {
             return className.indexOf("level") == 0;
         }).addClass("level-" + levelName);
+    };
+
+    this.win = function() {
+        $(this.puzzlePane).trigger("levelwin");
     };
 
     this.initialize();

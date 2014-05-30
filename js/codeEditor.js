@@ -45,17 +45,30 @@ function CodeEditor(textareaId, game) {
         });
     };
 
-    var updateGame = function(editor) {
+    this.onChange = function(callback) {
+        this.editor.on("changes", callback);
+    };
+
+    var updateHTML = function(editor) {
         game.updatePuzzlePane(editor.getValue());
     };
 
-    this.loadCode = function(code, codeType) {
-        if (codeType === "html") {
-            this.editor.on("changes", updateGame);
-        } else {
-            this.editor.off("changes", updateGame);
-        }
+    var updateCSS = function(editor) {
+        game.updatePuzzlePaneStyle(editor.getValue());
+    };
 
+    this.setCodeType = function(codeType) {
+        this.editor.off("changes", updateHTML);
+        this.editor.off("changes", updateCSS);
+
+        if (codeType === "html") {
+            this.editor.on("changes", updateHTML);
+        } else if (codeType === "css") {
+            this.editor.on("changes", updateCSS);
+        }
+    };
+
+    this.loadCode = function(code) {
         this.editor.setValue(preprocess(code));
         highlightLines(this.editor);
     };
