@@ -28,33 +28,26 @@ html, body {
     height: 750px;
 }
 
-.slideUp {
-    -webkit-transform: translateY(-100%);
-    -moz-transform: translateY(-100%);
-    -ms-transform: translateY(-100%);
-    -o-transform: translateY(-100%);
-    transform: translateY(-100%);
-
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
+.nextLevel {
+    -webkit-animation: slideout .5s ease-out 0s forwards, slidein 1s ease-in;
+    -o-animation: slideout .5s ease-out 0s forwards, slidein 1s ease-in;
+    animation: slideout .5s ease-out 0s forwards, slidein 1s ease-in;
 }
 
-.slideBackDown {
-    -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0);
+@-webkit-keyframes slideout {
+    0%   { margin-top: 0% }
+    100% { margin-top: -100%;}
+}
 
-    -webkit-transition: all 1.0s ease-in-out;
-    -moz-transition: all 1.0s ease-in-out;
-    -ms-transition: all 1.0s ease-in-out;
-    -o-transition: all 1.0s ease-in-out;
-    transition: all 1.0s ease-in-out;
+@keyframes slideout {
+    0%   { margin-top: 0% }
+    100% { margin-top: -100%;}
+}
 
+@keyframes slidein {
+    0%  { margin-top: 100%; display: block; }
+    10% { margin-top: 50%; }
+    100% { margin-top: 0;}
 }
 
 #puzzlePane, #editorPane {

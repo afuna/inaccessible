@@ -24,16 +24,17 @@ function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
             game.updateFlavorText("Success! You move on...");
 
             $("#panes > div")
-                .addClass("slideUp")
-                .one("transitionend", function(e) {
-                    game.loadLevel(game.currentLevel + 1);
+                .addClass("nextLevel")
+                .on("animationend", function(e) {
+                    // so that we don't show the next level's data as we're sliding out the previous level
+                    if (e.originalEvent.animationName == "slideout") {
+                        game.loadLevel(game.currentLevel + 1);
+                    }
 
-                    $(e.target).addClass("slideBackDown")
-                        .one("transitionend", function() {
-                                $(this).removeClass("slideUp slideBackDown");
-                            });
+                    if (e.originalEvent.animationName == "slidein") {
+                        $(e.target).removeClass("nextLevel");
+                    }
                 });
-
         });
     };
 
