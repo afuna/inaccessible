@@ -22,7 +22,18 @@ function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
 
         $(game.puzzlePane).on("levelwin", function() {
             game.updateFlavorText("Success! You move on...");
-            game.loadLevel(game.currentLevel + 1);
+
+            $("#panes > div")
+                .addClass("slideUp")
+                .one("transitionend", function(e) {
+                    game.loadLevel(game.currentLevel + 1);
+
+                    $(e.target).addClass("slideBackDown")
+                        .one("transitionend", function() {
+                                $(this).removeClass("slideUp slideBackDown");
+                            });
+                });
+
         });
     };
 
