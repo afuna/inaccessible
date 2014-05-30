@@ -16,10 +16,9 @@ function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
         game.playerStyles = document.getElementById('playerStyles');
 
         game.editor = new CodeEditor("code-editor", game);
-        game.currentLevel = parseInt(startLevel || 0, 10);
+        this.setCurrentLevel(startLevel);
 
         game.loadLevel(game.currentLevel);
-
 
         $(game.puzzlePane).on("levelwin", function() {
             game.updateFlavorText("Success! You move on...");
@@ -55,6 +54,10 @@ function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
         this.editor.loadCode(string);
     };
 
+    this.setCurrentLevel = function(levelNumber) {
+        this.currentLevel = parseInt(levelNumber || 0, 10);
+    };
+
     this.loadLevel = function(levelNumber) {
         var game = this;
 
@@ -83,7 +86,7 @@ function Game(puzzlePaneId, flavorTextPaneId, titleTextPaneId, startLevel) {
                 }
 
                 history.pushState({ "level": levelNumber }, levelData.title, "#level" + levelNumber);
-                game.currentLevel = levelNumber;
+                game.setCurrentLevel(levelNumber);
             });
         $('head').append('<link rel="stylesheet" href="levels/' + levelName + '/level.css?_=' + Math.random() + '" type="text/css" />');
         $('body').removeClass(function(i, className) {
